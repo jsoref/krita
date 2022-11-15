@@ -6,7 +6,7 @@
 # print status messages
 print_msg() {
     printf "\e[32m${1}\e[0m\n" "${@:2}"
-    # printf "%s\n" "${1}" >> ${OUPUT_LOG}
+    # printf "%s\n" "${1}" >> ${OUTPUT_LOG}
 }
 
 # print error
@@ -280,7 +280,7 @@ fi
 if [[ ${NOTARIZE} = "true" ]]; then
     print_msg "Signing checks complete, signatures are valid"
 else
-    echo "WARNING: Account information missing, Signtaure will not be performed"
+    echo "WARNING: Account information missing, Signature will not be performed"
     exit
 fi
 

@@ -56,7 +56,7 @@ BUILDROOT="${BUILDROOT%/}"
 # print status messages
 print_msg() {
     printf "\e[32m${1}\e[0m\n" "${@:2}"
-    # printf "%s\n" "${1}" >> ${OUPUT_LOG}
+    # printf "%s\n" "${1}" >> ${OUTPUT_LOG}
 }
 
 # print error
@@ -412,7 +412,7 @@ strip_python_dmginstall() {
     rm -rf Python.app
 }
 
-# Remove any missing rpath poiting to BUILDROOT
+# Remove any missing rpath pointing to BUILDROOT
 libs_clean_rpath () {
     for libFile in ${@}; do
         rpath=$(otool -l "${libFile}" | grep "path ${BUILDROOT}" | awk '{$1=$1;print $2}')
@@ -423,7 +423,7 @@ libs_clean_rpath () {
     done
 }
 
-# Multhread version
+# Multithreaded version
 # of libs_clean_rpath, but makes assumptions
 delete_install_rpath() {
     xargs -P4 -I FILE install_name_tool -delete_rpath "${BUILDROOT}/i/lib" FILE 2> "${BUILDROOT}/deploy_error.log"
@@ -457,7 +457,7 @@ fix_python_framework() {
 
 # Checks for macdeployqt
 # If not present attempts to install
-# If it fails shows an informatve message
+# If it fails shows an informative message
 # (For now, macdeployqt is fundamental to deploy)
 macdeployqt_exists() {
     printf "Checking for macdeployqt...  "
